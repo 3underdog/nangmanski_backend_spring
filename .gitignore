@@ -33,6 +33,8 @@ build/
 .vscode/
 
 ### yml ###
+application.yml
+application-local.yml
 src/main/resources/application-local.yml
 src/main/resources/application-dev.yml
 src/main/resources/application-prd.yml
