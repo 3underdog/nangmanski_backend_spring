@@ -5,6 +5,7 @@ server:
   shutdown: graceful
   http:
     port: 7979
+
 spring:
   config:
     activate:

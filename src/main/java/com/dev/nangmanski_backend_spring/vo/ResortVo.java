@@ -12,4 +12,5 @@ import lombok.NoArgsConstructor;
 public class ResortVo {
     private String resortCode;
     private String resortName;
+    private char status;
 }

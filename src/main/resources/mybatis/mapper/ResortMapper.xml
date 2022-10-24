@@ -5,6 +5,7 @@
         SELECT
             resort_code AS resortCode
             , resort_name AS resortName
+            , status
         FROM ski_resort
     </select>
 
