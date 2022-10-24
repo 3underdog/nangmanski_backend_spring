@@ -12,10 +12,20 @@ spring:
       on-profile: local
   ############################################################
   # DataSource 설정
-  ############################################################
-
-#  session:
-#    store-type: jdbc
+  ############################################################\
+  datasource:
+    driver-class-name: name here
+    url: url here
+    username: username here
+    password: password here
+    connectionTimeout: 5000
+    validationTimeout: 10000
+    idleTimeout: 10000
+    maxLifetime: 60000
+    minimumIdle: 5
+    maximumPoolSize: 10
+  session:
+    store-type: jdbc
 #    jdbc:
 #      initialize-schema: always
 
