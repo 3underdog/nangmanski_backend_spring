@@ -6,6 +6,7 @@
             resort_code AS resortCode
             , resort_name AS resortName
             , status
+            , fetch_status AS fetchStatus
         FROM ski_resort
     </select>
 

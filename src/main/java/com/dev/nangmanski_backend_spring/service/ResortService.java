@@ -19,7 +19,8 @@ public class ResortService {
     }
 
     public List<ResortVo> getResortList() {
-        return resortMapper.getResortList();
+        List<ResortVo> resortList = resortMapper.getResortList();
+        return resortList;
     }
 
 }

@@ -29,7 +29,7 @@ public class ResortController {
         log.info("Magic-Pin, process time = {}sec, data = {}", (time * 0.001));
         List<ResortVo> resortList = resortService.getResortList();
 
-        r.setCode("success");
+        r.setResult(true);
         r.setData(resortList);
         r.setMessage("api response success");
 
