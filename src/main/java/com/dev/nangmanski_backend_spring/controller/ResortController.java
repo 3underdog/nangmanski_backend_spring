@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @RestController
@@ -38,6 +40,9 @@ public class ResortController {
     @RequestMapping("/resortDetail")
     public CommonApiResponseVo resortDetail(String resortCode) {
         resortCode = "R0001";
+//        Map<String, String> param = new HashMap<>();
+//        param.put("resortCode", resortCode);
+
         CommonApiResponseVo r = new CommonApiResponseVo();
         long time = System.currentTimeMillis();
         log.info("getResortDetail, process time = {}sec, data = {}", (time * 0.001));

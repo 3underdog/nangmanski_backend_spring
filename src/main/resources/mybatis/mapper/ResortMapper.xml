@@ -2,15 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dev.nangmanski_backend_spring.mapper.ResortMapper">
     <resultMap id="resortSlopeList" type="com.dev.nangmanski_backend_spring.vo.ResortVo">
-        <result property="resortCode" column="RESORT_CODE"/>
-        <result property="resortName" column="RESORT_NAME"/>
-        <result property="address" column="RESORT_ADDRESS"/>
-        <result property="phoneNo" column="RESORT_PHONE_NO"/>
-        <result property="startTime" column="START_TIME"/>
-        <result property="endTime" column="END_TIME"/>
-        <result property="status" column="STATUS"/>
-        <result property="fetchStatus" column="FETCH_STATUS"/>
-        <collection property="slopeList" column="RESORT_CODE" javaType="java.util.ArrayList" ofType="com.dev.nangmanski_backend_spring.vo.SlopeVo" select="getSlopeInfo"/>
+        <id property="resortCode" column="resort_code"/>
+        <result property="resortName" column="resort_name"/>
+        <result property="address" column="resort_address"/>
+        <result property="phoneNo" column="resort_phone_no"/>
+        <result property="startTime" column="start_time"/>
+        <result property="endTime" column="end_time"/>
+        <result property="status" column="status"/>
+        <result property="fetchStatus" column="fetch_status"/>
+        <collection property="slopeList" column="resort_code" javaType="ArrayList" ofType="com.dev.nangmanski_backend_spring.vo.SlopeVo" select="getSlopeInfo"/>
     </resultMap>
 
     <select id="getResortList" resultType="com.dev.nangmanski_backend_spring.vo.ResortVo">
@@ -22,21 +22,27 @@
         FROM ski_resort
     </select>
 
-    <select id="getResortDetail" resultMap="resortSlopeList" parameterType="java.util.Map">
+    <select id="getResortDetail"
+            parameterType="java.util.Map"
+            resultMap="resortSlopeList">
+        /*mybatis.mapper.ResortMapper.getResortDetail*/
         SELECT
-            resort_code AS resortCode
-             , resort_name AS resortName
-             , resort_address AS address
-             , resort_phone_no AS phoneNo
-             , start_time AS startTime
-             , end_time AS endTime
-             , status
-             , fetch_status AS fetchStatus
+            resort_code
+            , resort_name
+            , resort_address
+            , resort_phone_no
+            , start_time
+            , end_time
+            , status
+            , fetch_status
         FROM ski_resort
         WHERE resort_code = #{resortCode}
     </select>
 
-    <select id="getSlopeInfo" resultType="com.dev.nangmanski_backend_spring.vo.SlopeVo" parameterType="java.util.Map">
+    <select id="getSlopeInfo"
+            parameterType="java.util.Map"
+            resultType="com.dev.nangmanski_backend_spring.vo.SlopeVo">
+        /*mybatis.mapper.ResortMapper.getSlopeInfo*/
         SELECT
             resort_code AS resortCode
             , slope_code AS slopeCode
