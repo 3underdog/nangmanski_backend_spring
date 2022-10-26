@@ -9,4 +9,6 @@ import java.util.List;
 @Mapper
 public interface ResortMapper {
     List<ResortVo> getResortList();
+
+    ResortVo getResortDetail(String resortCode);
 }

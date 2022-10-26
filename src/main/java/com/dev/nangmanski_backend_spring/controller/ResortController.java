@@ -24,13 +24,28 @@ public class ResortController {
 
     @RequestMapping("/resorts")
     public CommonApiResponseVo resortList() {
-        long   time              = System.currentTimeMillis();
+        long time = System.currentTimeMillis();
         CommonApiResponseVo r = new CommonApiResponseVo();
-        log.info("Magic-Pin, process time = {}sec, data = {}", (time * 0.001));
+        log.info("getResortList, process time = {}sec, data = {}", (time * 0.001));
         List<ResortVo> resortList = resortService.getResortList();
 
         r.setResult(true);
         r.setData(resortList);
+        r.setMessage("api response success");
+
+        time = (System.currentTimeMillis() - time);
+        return r;
+    }
+
+    @RequestMapping("/resortDetail")
+    public CommonApiResponseVo resortDetail(String resortCode) {
+        CommonApiResponseVo r = new CommonApiResponseVo();
+        long time = System.currentTimeMillis();
+        log.info("getResortDetail, process time = {}sec, data = {}", (time * 0.001));
+        ResortVo resort = resortService.getResortDetail(resortCode);
+
+        r.setResult(true);
+        r.setData(resort);
         r.setMessage("api response success");
 
         time = (System.currentTimeMillis() - time);

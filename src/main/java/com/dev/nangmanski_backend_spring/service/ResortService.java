@@ -23,4 +23,10 @@ public class ResortService {
         return resortList;
     }
 
+
+    public ResortVo getResortDetail(String resortCode) {
+        ResortVo resort = resortMapper.getResortDetail(resortCode);
+        return resort;
+    }
+
 }
