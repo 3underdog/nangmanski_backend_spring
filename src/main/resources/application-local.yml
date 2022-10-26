@@ -14,10 +14,10 @@ spring:
   # DataSource 설정
   ############################################################\
   datasource:
-    driver-class-name:
-    url:
-    username:
-    password:
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    url: jdbc:log4jdbc:mysql://shibaski.ckhkci0toeh4.ap-northeast-2.rds.amazonaws.com:3306/shibaski
+    username: shibaski
+    password: shibaskiepdlxjqpdltm12!
     connectionTimeout: 5000
     validationTimeout: 10000
     idleTimeout: 10000

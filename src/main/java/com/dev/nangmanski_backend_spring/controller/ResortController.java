@@ -18,8 +18,6 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class ResortController {
     @Autowired
-    private MainService mainService;
-    @Autowired
     private ResortService resortService;
 
     @RequestMapping("/resorts")
@@ -39,11 +37,11 @@ public class ResortController {
 
     @RequestMapping("/resortDetail")
     public CommonApiResponseVo resortDetail(String resortCode) {
+        resortCode = "R0001";
         CommonApiResponseVo r = new CommonApiResponseVo();
         long time = System.currentTimeMillis();
         log.info("getResortDetail, process time = {}sec, data = {}", (time * 0.001));
         ResortVo resort = resortService.getResortDetail(resortCode);
-
         r.setResult(true);
         r.setData(resort);
         r.setMessage("api response success");

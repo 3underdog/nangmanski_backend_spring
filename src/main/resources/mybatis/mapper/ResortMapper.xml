@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dev.nangmanski_backend_spring.mapper.ResortMapper">
+    <resultMap id="resortSlopeList" type="com.dev.nangmanski_backend_spring.vo.ResortVo">
+        <result property="resortCode" column="RESORT_CODE"/>
+        <result property="resortName" column="RESORT_NAME"/>
+        <result property="address" column="RESORT_ADDRESS"/>
+        <result property="phoneNo" column="RESORT_PHONE_NO"/>
+        <result property="startTime" column="START_TIME"/>
+        <result property="endTime" column="END_TIME"/>
+        <result property="status" column="STATUS"/>
+        <result property="fetchStatus" column="FETCH_STATUS"/>
+        <collection property="slopeList" column="RESORT_CODE" javaType="java.util.ArrayList" ofType="com.dev.nangmanski_backend_spring.vo.SlopeVo" select="getSlopeInfo"/>
+    </resultMap>
+
     <select id="getResortList" resultType="com.dev.nangmanski_backend_spring.vo.ResortVo">
         SELECT
             resort_code AS resortCode
@@ -10,4 +22,28 @@
         FROM ski_resort
     </select>
 
+    <select id="getResortDetail" resultMap="resortSlopeList" parameterType="java.util.Map">
+        SELECT
+            resort_code AS resortCode
+             , resort_name AS resortName
+             , resort_address AS address
+             , resort_phone_no AS phoneNo
+             , start_time AS startTime
+             , end_time AS endTime
+             , status
+             , fetch_status AS fetchStatus
+        FROM ski_resort
+        WHERE resort_code = #{resortCode}
+    </select>
+
+    <select id="getSlopeInfo" resultType="com.dev.nangmanski_backend_spring.vo.SlopeVo" parameterType="java.util.Map">
+        SELECT
+            resort_code AS resortCode
+            , slope_code AS slopeCode
+            , slope_name AS slopeName
+            , slope_level AS level
+            , status
+        FROM ski_slope
+        WHERE resort_code = #{resortCode}
+    </select>
 </mapper>

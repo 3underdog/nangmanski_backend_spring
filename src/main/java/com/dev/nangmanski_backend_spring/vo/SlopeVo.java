@@ -14,5 +14,5 @@ public class SlopeVo {
     private String slopeCode;
     private String slopeName;
     private String level;
-    private String status;
+    private char status;
 }

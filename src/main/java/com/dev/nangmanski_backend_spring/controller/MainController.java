@@ -24,8 +24,6 @@ import java.util.List;
 public class MainController {
     @Autowired
     private MainService mainService;
-    @Autowired
-    private ResortService resortService;
 
     @RequestMapping("/")
     public ModelAndView index() {

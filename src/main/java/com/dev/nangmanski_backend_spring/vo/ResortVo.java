@@ -14,6 +14,10 @@ import java.util.List;
 public class ResortVo {
     private String resortCode;
     private String resortName;
+    private String address;
+    private String phoneNo;
+    private String startTime;
+    private String endTime;
     private char status;
     private char fetchStatus;
     private List<SlopeVo> slopeList;
