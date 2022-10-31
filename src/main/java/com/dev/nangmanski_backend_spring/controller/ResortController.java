@@ -29,10 +29,10 @@ public class ResortController {
         long time = System.currentTimeMillis();
         CommonApiResponseVo r = new CommonApiResponseVo();
         log.info("getResortList, process time = {}sec, data = {}", (time * 0.001));
-        List<ResortVo> resortList = resortService.getResortList();
+        Map<String, List<ResortVo>> resortAreaMap = resortService.getResortList();
 
         r.setResult(true);
-        r.setData(resortList);
+        r.setData(resortAreaMap);
         r.setMessage("api response success");
 
         time = (System.currentTimeMillis() - time);

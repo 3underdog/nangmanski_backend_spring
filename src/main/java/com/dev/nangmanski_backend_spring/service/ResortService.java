@@ -5,7 +5,10 @@ import com.dev.nangmanski_backend_spring.vo.ResortVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ResortService {
@@ -17,9 +20,15 @@ public class ResortService {
         return "return " + msg + "by mainService";
     }
 
-    public List<ResortVo> getResortList() {
+    public Map<String, List<ResortVo>> getResortList() {
         List<ResortVo> resortList = resortMapper.getResortList();
-        return resortList;
+        Map<String, List<ResortVo>> resortAreaMap = new HashMap<>();
+
+        for(ResortVo resort: resortList) {
+            resortAreaMap.computeIfAbsent(resort.getAddressDepth(), k -> new ArrayList<>()).add(resort);
+        }
+
+        return resortAreaMap;
     }
 
 

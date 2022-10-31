@@ -5,27 +5,36 @@
         <id property="resortCode" column="resort_code"/>
         <result property="resortName" column="resort_name"/>
         <result property="address" column="resort_address"/>
-        <result property="addressDepth" column="area_code"/>
+        <result property="addressDepth" column="dtl_code_name"/>
         <result property="phoneNo" column="resort_phone_no"/>
         <result property="startTime" column="start_time"/>
         <result property="endTime" column="end_time"/>
         <result property="status" column="status"/>
         <result property="fetchStatus" column="fetch_status"/>
+        <result property="openSlopeNameListStr" column="openSlopeNameListStr"/>
         <collection property="slopeList" column="resort_code" javaType="ArrayList" ofType="com.dev.nangmanski_backend_spring.vo.SlopeVo" select="getSlopeInfo"/>
     </resultMap>
 
     <select id="getResortList" resultType="com.dev.nangmanski_backend_spring.vo.ResortVo">
         SELECT
-            resort_code AS resortCode
+            sr.resort_code AS resortCode
             , resort_name AS resortName
             , resort_address AS address
-            , area_code AS addressDepth
+            , dtl_code_name AS addressDepth
             , resort_phone_no AS phoneNo
             , start_time AS startTime
             , end_time AS endTime
-            , status
+            , sr.status
             , fetch_status AS fetchStatus
-        FROM ski_resort
+            , (
+                SELECT GROUP_CONCAT(' ', slope_name)
+                FROM ski_slope
+                WHERE resort_code =  sr.resort_code and status = 'O'
+                GROUP BY resort_code
+            ) AS openSlopeNameListStr
+        FROM ski_resort sr
+        JOIN comm_dtl_cd cdc
+        ON sr.area_code = cdc.dtl_code;
     </select>
 
     <select id="getResortDetail"
