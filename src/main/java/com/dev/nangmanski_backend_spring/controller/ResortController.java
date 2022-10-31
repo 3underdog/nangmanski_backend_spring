@@ -7,6 +7,7 @@ import com.dev.nangmanski_backend_spring.vo.common.CommonApiResponseVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,12 +18,13 @@ import java.util.Map;
 
 @Slf4j
 @RestController
+@RequestMapping("/api/v1/resorts")
 @CrossOrigin(origins = "*")
 public class ResortController {
     @Autowired
     private ResortService resortService;
 
-    @RequestMapping("/resorts")
+    @GetMapping("")
     public CommonApiResponseVo resortList() {
         long time = System.currentTimeMillis();
         CommonApiResponseVo r = new CommonApiResponseVo();
@@ -37,9 +39,9 @@ public class ResortController {
         return r;
     }
 
-    @RequestMapping("/resortDetail")
-    public CommonApiResponseVo resortDetail(String resortCode) {
-        resortCode = "R0001";
+    @GetMapping("/{resortCode}")
+    public CommonApiResponseVo resortDetail(@PathVariable String resortCode) {
+//        resortCode = "R0001";
 //        Map<String, String> param = new HashMap<>();
 //        param.put("resortCode", resortCode);
 
