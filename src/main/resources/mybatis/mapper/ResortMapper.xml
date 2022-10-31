@@ -5,6 +5,7 @@
         <id property="resortCode" column="resort_code"/>
         <result property="resortName" column="resort_name"/>
         <result property="address" column="resort_address"/>
+        <result property="addressDepth" column="area_code"/>
         <result property="phoneNo" column="resort_phone_no"/>
         <result property="startTime" column="start_time"/>
         <result property="endTime" column="end_time"/>
@@ -17,6 +18,11 @@
         SELECT
             resort_code AS resortCode
             , resort_name AS resortName
+            , resort_address AS address
+            , area_code AS addressDepth
+            , resort_phone_no AS phoneNo
+            , start_time AS startTime
+            , end_time AS endTime
             , status
             , fetch_status AS fetchStatus
         FROM ski_resort
