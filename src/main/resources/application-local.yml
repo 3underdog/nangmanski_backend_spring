@@ -8,16 +8,17 @@ server:
 
 spring:
   config:
-    activate:
-      on-profile: local
+    import: optional:classpath:.env[.properties]
+  activate:
+    on-profile: local
   ############################################################
   # DataSource 설정
   ############################################################\
   datasource:
-    driver-class-name:
-    url:
-    username:
-    password:
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     connectionTimeout: 5000
     validationTimeout: 10000
     idleTimeout: 10000
