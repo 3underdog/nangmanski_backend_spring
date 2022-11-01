@@ -16,6 +16,7 @@ public class ResortVo {
     private String resortName;
     private String address;
     private String addressDepth;
+    private String addressDtlDepth;
     private String phoneNo;
     private String startTime;
     private String endTime;
