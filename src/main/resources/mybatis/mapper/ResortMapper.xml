@@ -20,7 +20,8 @@
             sr.resort_code AS resortCode
             , resort_name AS resortName
             , resort_address AS address
-            , dtl_code_name AS addressDepth
+            , (SELECT dtl_code_name FROM comm_dtl_cd WHERE grp_code=1 AND dtl_code=sr.area_code) AS addressDepth
+            , (SELECT dtl_code_name FROM comm_dtl_cd WHERE grp_code=2 AND dtl_code=sr.area_dtl_code) AS addressDtlDepth
             , resort_phone_no AS phoneNo
             , start_time AS startTime
             , end_time AS endTime
@@ -33,8 +34,6 @@
                 GROUP BY resort_code
             ) AS openSlopeNameListStr
         FROM ski_resort sr
-        JOIN comm_dtl_cd cdc
-        ON sr.area_code = cdc.dtl_code;
     </select>
 
     <select id="getResortDetail"
