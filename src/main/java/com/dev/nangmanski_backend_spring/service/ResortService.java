@@ -31,6 +31,17 @@ public class ResortService {
         return resortAreaMap;
     }
 
+    public Map<String, List<ResortVo>> getResortListOnly() {
+        List<ResortVo> resortList = resortMapper.getResortListOnly();
+        Map<String, List<ResortVo>> resortAreaMap = new HashMap<>();
+
+        for(ResortVo resort: resortList) {
+            resortAreaMap.computeIfAbsent(resort.getAddressDepth(), k -> new ArrayList<>()).add(resort);
+        }
+
+        return resortAreaMap;
+    }
+
 
     public ResortVo getResortDetail(String resortCode) {
         ResortVo resort = resortMapper.getResortDetail(resortCode);

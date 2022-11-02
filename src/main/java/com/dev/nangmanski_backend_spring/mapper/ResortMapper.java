@@ -10,5 +10,7 @@ import java.util.List;
 public interface ResortMapper {
     List<ResortVo> getResortList();
 
+    List<ResortVo> getResortListOnly();
+
     ResortVo getResortDetail(String resortCode);
 }
