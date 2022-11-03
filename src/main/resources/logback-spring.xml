@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true"> <!-- default 1 minutes -->
+
+    <property name="LOG_FILE" value="nangmanski_backend_spring" />
+<!--    <property name="LOG_PATH" value="/var/log/dev/nangmanski_backend_spring" />-->
+
+    <springProfile name="local">
+        <appender name="LOCAL_CONSOLE_POLICY" class="ch.qos.logback.core.ConsoleAppender">
+            <filter class="com.dev.nangmanski_backend_spring.filter.LogbackFilter" />
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <Pattern>[%d{HH:mm:ss}][%-5level][%thread][%mdc{TRACE_ID}] %logger{36}.%method - %msg %n</Pattern>
+            </layout>
+        </appender>
+
+        <!-- Application Loggers -->
+        <logger name="com.dec" level="DEBUG" additivity="false">
+            <appender-ref ref="LOCAL_CONSOLE_POLICY" />
+        </logger>
+
+        <logger name="org.springframework" level="INFO" additivity="false">
+            <appender-ref ref="LOCAL_CONSOLE_POLICY" />
+        </logger>
+
+        <logger name="jdbc" level="OFF"/>
+        <logger name="jdbc.sqlonly" level="OFF"/>
+        <logger name="jdbc.sqltiming" level="DEBUG" additivity="false">
+            <appender-ref ref="LOCAL_CONSOLE_POLICY" />
+        </logger>
+        <logger name="jdbc.audit" level="OFF"/>
+        <logger name="jdbc.resultset" level="OFF"/>
+        <logger name="jdbc.resultsettable" level="OFF"/>
+        <logger name="jdbc.connection" level="OFF"/>
+    </springProfile>
+
+    <root level="INFO">
+        <springProfile name="local">
+            <appender-ref ref="LOCAL_CONSOLE_POLICY"/>
+        </springProfile>
+<!--        <springProfile name="dev">-->
+<!--            <appender-ref ref="DEV_FILE_POLICY"/>-->
+<!--        </springProfile>-->
+<!--        <springProfile name="prd">-->
+<!--            <appender-ref ref="PRD_FILE_POLICY"/>-->
+<!--        </springProfile>-->
+    </root>
+</configuration>
