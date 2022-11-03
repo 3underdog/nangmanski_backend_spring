@@ -2,10 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dev.nangmanski_backend_spring.mapper.ResortMapper">
     <resultMap id="resortSlopeList" type="com.dev.nangmanski_backend_spring.vo.ResortVo">
+        <id property="resortCode" column="resortCode"/>
+        <result property="resortName" column="resortName"/>
+        <result property="address" column="address"/>
+        <result property="addressDepth" column="addressDepth"/>
+        <result property="addressDtlDepth" column="addressDtlDepth"/>
+        <result property="phoneNo" column="phoneNo"/>
+        <result property="startTime" column="startTime"/>
+        <result property="endTime" column="endTime"/>
+        <result property="status" column="status"/>
+        <result property="fetchStatus" column="fetchStatus"/>
+        <result property="openSlopeNameListStr" column="openSlopeNameListStr"/>
+        <collection property="slopeList" column="resortCode" javaType="ArrayList" ofType="com.dev.nangmanski_backend_spring.vo.SlopeVo" select="getSlopeInfo"/>
+    </resultMap>
+
+    <resultMap id="resortSlopeListOnly" type="com.dev.nangmanski_backend_spring.vo.ResortVo">
         <id property="resortCode" column="resort_code"/>
         <result property="resortName" column="resort_name"/>
         <result property="address" column="resort_address"/>
-        <result property="addressDepth" column="dtl_code_name"/>
         <result property="phoneNo" column="resort_phone_no"/>
         <result property="startTime" column="start_time"/>
         <result property="endTime" column="end_time"/>
@@ -15,7 +29,7 @@
         <collection property="slopeList" column="resort_code" javaType="ArrayList" ofType="com.dev.nangmanski_backend_spring.vo.SlopeVo" select="getSlopeInfo"/>
     </resultMap>
 
-    <select id="getResortList" resultType="com.dev.nangmanski_backend_spring.vo.ResortVo">
+    <select id="getResortList" resultMap="resortSlopeList">
         SELECT
             sr.resort_code AS resortCode
             , resort_name AS resortName
