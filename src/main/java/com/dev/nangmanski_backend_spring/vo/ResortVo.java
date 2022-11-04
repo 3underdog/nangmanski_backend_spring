@@ -24,6 +24,8 @@ public class ResortVo {
     private String slopesWebcamUrl;
     private char status;
     private char fetchStatus;
+    private String openSlopeNameListStr;
+    private List<ArrayList> slopeSummary;
     private List<SlopeVo> slopeList;
     private String openSlopeNameListStr;
 }
