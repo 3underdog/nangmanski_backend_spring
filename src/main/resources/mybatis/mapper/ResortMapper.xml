@@ -18,6 +18,15 @@
         <collection property="slopeList" column="resortCode" javaType="ArrayList" ofType="com.dev.nangmanski_backend_spring.vo.SlopeVo" select="getSlopeInfo"/>
     </resultMap>
 
+    <resultMap id="slopeWithTimeList" type="com.dev.nangmanski_backend_spring.vo.SlopeVo">
+        <id property="resortCode" column="resortCode"/>
+        <result property="slopeCode" column="slopeCode"/>
+        <result property="slopeName" column="slopeName"/>
+        <result property="level" column="level"/>
+        <result property="status" column="status"/>
+        <collection property="slopeTimeList" column="{resortCode=resortCode, slopeCode=slopeCode}" javaType="ArrayList" ofType="com.dev.nangmanski_backend_spring.vo.SlopeTimeVo" select="getSlopeTimeInfo"/>
+    </resultMap>
+
     <resultMap id="resortSlopeListOnly" type="com.dev.nangmanski_backend_spring.vo.ResortVo">
         <id property="resortCode" column="resort_code"/>
         <result property="resortName" column="resort_name"/>
@@ -74,7 +83,7 @@
 
     <select id="getSlopeInfo"
             parameterType="java.util.Map"
-            resultType="com.dev.nangmanski_backend_spring.vo.SlopeVo">
+            resultMap="slopeWithTimeList">
         /*mybatis.mapper.ResortMapper.getSlopeInfo*/
         SELECT
             resort_code AS resortCode
@@ -84,5 +93,21 @@
             , status
         FROM ski_slope
         WHERE resort_code = #{resortCode}
+    </select>
+
+    <select id="getSlopeTimeInfo"
+            parameterType="java.util.Map"
+            resultType="com.dev.nangmanski_backend_spring.vo.SlopeTimeVo">
+        /*mybatis.mapper.ResortMapper.getSlopeInfo*/
+        SELECT
+            resort_code AS resortCode
+             , slope_code AS slopeCode
+             , slope_time_code AS slopeTimeCode
+             , slope_time_name AS slopeTimeName
+             , start_time AS startTime
+             , end_time AS endTime
+             , open_yn AS openYn
+        FROM slope_time
+        WHERE resort_code = #{resortCode} and slope_code = #{slopeCode}
     </select>
 </mapper>
