@@ -20,6 +20,8 @@ public class ResortVo {
     private String phoneNo;
     private String startTime;
     private String endTime;
+    private String slopesImageUrl;
+    private String slopesWebcamUrl;
     private char status;
     private char fetchStatus;
     private List<SlopeVo> slopeList;

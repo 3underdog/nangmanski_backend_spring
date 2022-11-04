@@ -10,6 +10,8 @@
         <result property="phoneNo" column="phoneNo"/>
         <result property="startTime" column="startTime"/>
         <result property="endTime" column="endTime"/>
+        <result property="slopesImageUrl" column="slopesImageUrl"/>
+        <result property="slopesWebcamUrl" column="slopesWebcamUrl"/>
         <result property="status" column="status"/>
         <result property="fetchStatus" column="fetchStatus"/>
         <result property="openSlopeNameListStr" column="openSlopeNameListStr"/>
@@ -30,6 +32,7 @@
     </resultMap>
 
     <select id="getResortList" resultMap="resortSlopeList">
+        /*mybatis.mapper.ResortMapper.getresortList*/
         SELECT
             sr.resort_code AS resortCode
             , resort_name AS resortName
@@ -39,6 +42,8 @@
             , resort_phone_no AS phoneNo
             , start_time AS startTime
             , end_time AS endTime
+            , slopes_image_url AS slopesImageUrl
+            , slopes_webcam_url AS slopesWebcamUrl
             , sr.status
             , fetch_status AS fetchStatus
             , (
