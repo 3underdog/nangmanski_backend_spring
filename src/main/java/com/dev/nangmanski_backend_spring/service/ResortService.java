@@ -24,25 +24,24 @@ public class ResortService {
 
     public Map<String, List<ResortVo>> getResortList() {
         List<ResortVo> resortList = resortMapper.getResortList();
-        Map<String, List<ResortVo>> resortAreaMap = new HashMap<>();
+        List<SlopeTimeVo> slopeTimeList = resortMapper.getSlopeTimeList();
 
+        Map<String, List<ResortVo>> resortAreaMap = new HashMap<>();
         for(ResortVo resort: resortList) {
             resortAreaMap.computeIfAbsent(resort.getAddressDepth(), k -> new ArrayList<>()).add(resort);
         }
-
         return resortAreaMap;
     }
 
-    public Map<String, List<ResortVo>> getResortListTest() {
-        List<ResortVo> resortList = resortMapper.getResortListTest();
-        List<SlopeTimeVo> slopeTimeList = resortMapper.getSlopeTimeList();
+    /* No use
+    public Map<String, List<ResortVo>> getResortListCollections() {
+        List<ResortVo> resortList = resortMapper.getResortListCollections();
         Map<String, List<ResortVo>> resortAreaMap = new HashMap<>();
 
         for(ResortVo resort: resortList) {
             resortAreaMap.computeIfAbsent(resort.getAddressDepth(), k -> new ArrayList<>()).add(resort);
         }
         return resortAreaMap;
-
     }
 
     public Map<String, List<ResortVo>> getResortListOnly() {
@@ -52,14 +51,12 @@ public class ResortService {
         for(ResortVo resort: resortList) {
             resortAreaMap.computeIfAbsent(resort.getAddressDepth(), k -> new ArrayList<>()).add(resort);
         }
-
         return resortAreaMap;
     }
-
 
     public ResortVo getResortDetail(String resortCode) {
         ResortVo resort = resortMapper.getResortDetail(resortCode);
         return resort;
     }
-
+     */
 }

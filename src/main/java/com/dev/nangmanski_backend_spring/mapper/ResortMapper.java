@@ -11,11 +11,12 @@ import java.util.List;
 public interface ResortMapper {
     List<ResortVo> getResortList();
 
-    List<ResortVo> getResortListTest();
 
     List<SlopeTimeVo> getSlopeTimeList();
 
-    List<ResortVo> getResortListOnly();
-
-    ResortVo getResortDetail(String resortCode);
+//    List<ResortVo> getResortListCollections();
+//
+//    List<ResortVo> getResortListOnly();
+//
+//    ResortVo getResortDetail(String resortCode);
 }

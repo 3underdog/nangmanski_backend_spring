@@ -25,7 +25,7 @@ public class ResortController {
     private ResortService resortService;
 
     @GetMapping("")
-    public CommonApiResponseVo resortList() {
+    public CommonApiResponseVo test() {
         long time = System.currentTimeMillis();
         CommonApiResponseVo r = new CommonApiResponseVo();
         log.info("getResortList, process time = {}sec, data = {}", (time * 0.001));
@@ -35,23 +35,24 @@ public class ResortController {
         r.setData(resortAreaMap);
         r.setMessage("api response success");
 
-        time = (System.currentTimeMillis() - time);
+        System.out.println(time);
         return r;
     }
 
-
-    @GetMapping("/test")
-    public CommonApiResponseVo test() {
+    // No use
+    /*
+    @GetMapping("/collections")
+    public CommonApiResponseVo resortListCollections() {
         long time = System.currentTimeMillis();
         CommonApiResponseVo r = new CommonApiResponseVo();
         log.info("getResortList, process time = {}sec, data = {}", (time * 0.001));
-        Map<String, List<ResortVo>> resortAreaMap = resortService.getResortListTest();
+        Map<String, List<ResortVo>> resortAreaMap = resortService.getResortListCollections();
 
         r.setResult(true);
         r.setData(resortAreaMap);
         r.setMessage("api response success");
 
-        System.out.println(time);
+        time = (System.currentTimeMillis() - time);
         return r;
     }
 
@@ -72,10 +73,6 @@ public class ResortController {
 
     @GetMapping("/{resortCode}")
     public CommonApiResponseVo resortDetail(@PathVariable String resortCode) {
-//        resortCode = "R0001";
-//        Map<String, String> param = new HashMap<>();
-//        param.put("resortCode", resortCode);
-
         CommonApiResponseVo r = new CommonApiResponseVo();
         long time = System.currentTimeMillis();
         log.info("getResortDetail, process time = {}sec, data = {}", (time * 0.001));
@@ -87,4 +84,5 @@ public class ResortController {
         time = (System.currentTimeMillis() - time);
         return r;
     }
+    */
 }
