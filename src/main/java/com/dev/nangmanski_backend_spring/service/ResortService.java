@@ -30,19 +30,6 @@ public class ResortService {
         return resortAreaMap;
     }
 
-
-
-// {
-//   "재즈": {
-//       "오전": "o"
-//       , "오후": "x"
-//   }
-//   , '발라드": {
-//        "오전": "o"
-//       , "오후": "x"
-//   }
-// }
-
     public Map<String, List<ResortVo>> getResortListTest() {
         List<ResortVo> resortList = resortMapper.getResortList();
         List<SlopeTimeVo> slopeTimeList = resortMapper.getSlopeTimeList();
@@ -78,8 +65,8 @@ public class ResortService {
             for(SlopeVo slope: resort.getSlopeList()) {
                 String slopeCode = slope.getSlopeCode();
                 if(isFirstResortLoop) {
-                    slopeCodeList = new ArrayList<String>(resortMap.get(resortCode).keySet());
-                    timeNameList = new ArrayList<String>(resortMap.get(resortCode).get(slopeCode).keySet());
+                    slopeCodeList = new ArrayList(resortMap.get(resortCode).keySet());
+                    timeNameList = new ArrayList(resortMap.get(resortCode).get(slopeCode).keySet());
                     isFirstResortLoop = false;
                 }
                 slopeMappingMap.put(slopeCode, slope.getSlopeName());
@@ -102,8 +89,6 @@ public class ResortService {
             resort.getSlopeSummary().add(0, slopeSummaryHeader);
         }
 
-        System.out.println("DFDF");
-
         for(ResortVo resort: resortList) {
             resortAreaMap.computeIfAbsent(resort.getAddressDepth(), k -> new ArrayList<>()).add(resort);
         }
@@ -111,7 +96,7 @@ public class ResortService {
     }
 
 
-    public Map<String, List<ResortVo>> getResortListTest2() {
+    public Map<String, List<ResortVo>> getResortListTestWith3Depth() {
         List<ResortVo> resortList = resortMapper.getResortList();
         List<SlopeTimeVo> slopeTimeList = resortMapper.getSlopeTimeList();
 

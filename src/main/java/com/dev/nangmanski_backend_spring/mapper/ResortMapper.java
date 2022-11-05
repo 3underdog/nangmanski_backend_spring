@@ -11,7 +11,6 @@ import java.util.List;
 public interface ResortMapper {
     List<ResortVo> getResortList();
 
-
     List<SlopeTimeVo> getSlopeTimeList();
 
 //    List<ResortVo> getResortListCollections();
