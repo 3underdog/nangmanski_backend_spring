@@ -26,6 +26,6 @@ public class ResortVo {
     private char status;
     private char fetchStatus;
     private String openSlopeNameListStr;
-    private List<ArrayList> slopeSummary;
+    private List<List<String>> slopeSummary;
     private List<SlopeVo> slopeList;
 }
