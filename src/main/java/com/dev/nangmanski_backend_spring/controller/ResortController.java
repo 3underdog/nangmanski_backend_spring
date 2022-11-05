@@ -39,6 +39,22 @@ public class ResortController {
         return r;
     }
 
+
+    @GetMapping("/test")
+    public CommonApiResponseVo test() {
+        long time = System.currentTimeMillis();
+        CommonApiResponseVo r = new CommonApiResponseVo();
+        log.info("getResortList, process time = {}sec, data = {}", (time * 0.001));
+        Map<String, List<ResortVo>> resortAreaMap = resortService.getResortListTest();
+
+        r.setResult(true);
+        r.setData(resortAreaMap);
+        r.setMessage("api response success");
+
+        System.out.println(time);
+        return r;
+    }
+
     @GetMapping("resortsOnly")
     public CommonApiResponseVo resortListOnly() {
         long time = System.currentTimeMillis();

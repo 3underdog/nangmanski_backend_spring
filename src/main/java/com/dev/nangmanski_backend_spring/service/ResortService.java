@@ -2,6 +2,8 @@ package com.dev.nangmanski_backend_spring.service;
 
 import com.dev.nangmanski_backend_spring.mapper.ResortMapper;
 import com.dev.nangmanski_backend_spring.vo.ResortVo;
+import com.dev.nangmanski_backend_spring.vo.SlopeTimeVo;
+import com.dev.nangmanski_backend_spring.vo.SlopeVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +31,18 @@ public class ResortService {
         }
 
         return resortAreaMap;
+    }
+
+    public Map<String, List<ResortVo>> getResortListTest() {
+        List<ResortVo> resortList = resortMapper.getResortListTest();
+        List<SlopeTimeVo> slopeTimeList = resortMapper.getSlopeTimeList();
+        Map<String, List<ResortVo>> resortAreaMap = new HashMap<>();
+
+        for(ResortVo resort: resortList) {
+            resortAreaMap.computeIfAbsent(resort.getAddressDepth(), k -> new ArrayList<>()).add(resort);
+        }
+        return resortAreaMap;
+
     }
 
     public Map<String, List<ResortVo>> getResortListOnly() {
