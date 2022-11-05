@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -27,5 +28,4 @@ public class ResortVo {
     private String openSlopeNameListStr;
     private List<ArrayList> slopeSummary;
     private List<SlopeVo> slopeList;
-    private String openSlopeNameListStr;
 }
