@@ -1,9 +1,4 @@
 spring:
-  mvc:
-    view:
-      prefix: /WEB-INF/views/
-      suffix: .jsp
-    static-path-pattern: /**
   devtools:
     livereload:
       enabled: true
