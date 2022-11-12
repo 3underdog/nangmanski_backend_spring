@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  springboot:
+    container_name: springboot
+    build: .
+    restart: always
+    ports:
+      - "7979:7979"
