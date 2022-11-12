@@ -22,6 +22,7 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web:2.7.5'
     implementation 'org.springframework.boot:spring-boot-starter-web-services:2.7.5'
+    implementation 'org.springframework.boot:spring-boot-starter-tomcat'
     implementation 'org.springframework.session:spring-session-core:2.7.0'
     implementation 'org.projectlombok:lombok:1.18.24'
     implementation 'org.apache.commons:commons-lang3:3.12.0'
@@ -37,7 +38,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.5'
 }
 
-group = 'com.example'
+group = 'com.dev'
 version = '0.0.1-SNAPSHOT'
 description = 'nangmanski_backend_spring'
 sourceCompatibility = '17'

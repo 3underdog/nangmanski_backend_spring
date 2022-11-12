@@ -1,9 +1,8 @@
 package com.dev.nangmanski_backend_spring.util;
 
-import org.apache.commons.lang3.StringUtils;
 import java.util.ArrayList;
 
-public class StringUtil extends StringUtils {
+public class StringUtil {
 
     public static boolean isEmpty(String str) {
         return !isNotEmpty(str);
