@@ -3,8 +3,9 @@
  */
 
 plugins {
+    id 'org.springframework.boot' version '2.7.5'
+    id 'io.spring.dependency-management' version '1.0.14.RELEASE'
     id 'java'
-    id 'idea'
 }
 
 jar {
@@ -39,8 +40,8 @@ dependencies {
 }
 
 group = 'com.dev'
-version = '0.0.1-SNAPSHOT'
 description = 'nangmanski_backend_spring'
+version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
 
