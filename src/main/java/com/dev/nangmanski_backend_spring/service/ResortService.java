@@ -14,23 +14,7 @@ public class ResortService {
     @Autowired
     private ResortMapper resortMapper;
 
-    public String getMessage(String msg) {
-
-        return "return " + msg + "by mainService";
-    }
-
     public Map<String, List<ResortVo>> getResortList() {
-        List<ResortVo> resortList = resortMapper.getResortList();
-        List<SlopeTimeVo> slopeTimeList = resortMapper.getSlopeTimeList();
-
-        Map<String, List<ResortVo>> resortAreaMap = new HashMap<>();
-        for(ResortVo resort: resortList) {
-            resortAreaMap.computeIfAbsent(resort.getAddressDepth(), k -> new ArrayList<>()).add(resort);
-        }
-        return resortAreaMap;
-    }
-
-    public Map<String, List<ResortVo>> getResortListTest() {
         List<ResortVo> resortList = resortMapper.getResortList();
         List<SlopeTimeVo> slopeTimeList = resortMapper.getSlopeTimeList();
 
@@ -95,6 +79,16 @@ public class ResortService {
         return resortAreaMap;
     }
 
+    public Map<String, List<ResortVo>> getResortListTest() {
+        List<ResortVo> resortList = resortMapper.getResortList();
+        List<SlopeTimeVo> slopeTimeList = resortMapper.getSlopeTimeList();
+
+        Map<String, List<ResortVo>> resortAreaMap = new HashMap<>();
+        for(ResortVo resort: resortList) {
+            resortAreaMap.computeIfAbsent(resort.getAddressDepth(), k -> new ArrayList<>()).add(resort);
+        }
+        return resortAreaMap;
+    }
 
     public Map<String, List<ResortVo>> getResortListTestWith3Depth() {
         List<ResortVo> resortList = resortMapper.getResortList();
@@ -119,8 +113,6 @@ public class ResortService {
 
             resortMap.get(timeResortCode).get(timeSlopeCode).put(slopeTime.getSlopeTimeName(), slopeTime.getOpenYn());
         }
-
-        System.out.println(resortMap);
 
         List<String> slopeSummaryInner = new ArrayList<>();
         Map<String, String> compareMap = new HashMap<>();

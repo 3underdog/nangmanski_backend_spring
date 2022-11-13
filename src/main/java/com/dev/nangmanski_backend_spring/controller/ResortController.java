@@ -29,7 +29,7 @@ public class ResortController {
         long time = System.currentTimeMillis();
         CommonApiResponseVo r = new CommonApiResponseVo();
         log.info("getResortList, process time = {}sec, data = {}", (time * 0.001));
-        Map<String, List<ResortVo>> resortAreaMap = resortService.getResortListTest();
+        Map<String, List<ResortVo>> resortAreaMap = resortService.getResortList();
 
         r.setResult(true);
         r.setData(resortAreaMap);
