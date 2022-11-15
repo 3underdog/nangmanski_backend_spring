@@ -1,6 +1,5 @@
 package com.dev.nangmanski_backend_spring.controller;
 
-import com.dev.nangmanski_backend_spring.service.MainService;
 import com.dev.nangmanski_backend_spring.service.ResortService;
 import com.dev.nangmanski_backend_spring.vo.ResortVo;
 import com.dev.nangmanski_backend_spring.vo.common.CommonApiResponseVo;
@@ -10,15 +9,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/resorts")
+@RequestMapping("/v1/resorts")
 @CrossOrigin(origins = "*")
 public class ResortController {
     @Autowired
