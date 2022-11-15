@@ -35,6 +35,11 @@ public class ResortService {
             resortMap.get(timeResortCode).get(timeSlopeCode).put(slopeTime.getSlopeTimeName(), slopeTime.getOpenYn());
         }
 
+        // TODO
+        // HOW TO GET LIST OF CURRENT SLOPE STATUS
+        // DB OR SERVICE LOGIC
+
+
         for(ResortVo resort: resortList) {
             String resortCode = resort.getResortCode();
             resort.setSlopeSummary(new ArrayList<>());
